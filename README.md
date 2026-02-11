@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://github.com/arimbiws/ajsmashburgers">
-    <img src="public/storage/company/logo-default.png" alt="Logo AJ Smash Burger" height="200">
+    <img src="public/company/logo-default.png" alt="Logo AJ Smash Burger" height="200">
     </a>
     <hr />
     <p>
@@ -18,9 +18,9 @@
 
 ## 💻 Preview Website
 
-|                          Halaman Utama                           |                             Halaman Admin                              |
-| :--------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| ![Home Page](public/storage/screenshots/screenshot-homepage.png) | ![Admin Dashboard](public/storage/screenshots/screenshot-homepage.png) |
+|                      Halaman Utama                       |                         Halaman Admin                          |
+| :------------------------------------------------------: | :------------------------------------------------------------: |
+| ![Home Page](public/screenshots/screenshot-homepage.png) | ![Admin Dashboard](public/screenshots/screenshot-homepage.png) |
 
 ## ✨ Fitur Utama
 
