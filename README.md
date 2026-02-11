@@ -1,59 +1,130 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
+    <a href="https://github.com/username/ajsmashburgers">
+    <img src="storage\app\public\company\logo-default.png" alt="Logo AJ Smash Burger" height="200">
+    </a>
+    <hr />
+    <p>
+        <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP" /> 
+        <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel" />
+        <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+        <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+    </p>
+    <p align="center">
+        Sistem Informasi berbasis website, dibangun untuk membantu <strong>AJ Smash Burger</strong> dalam mengelola promosi digital, arsip menu, dan informasi gerai secara terpusat. Dilengkapi dengan <strong>Admin Panel</strong> untuk pengelolaan konten secara mandiri (CMS).
+    </p>
+    Proyek ini dikembangkan sebagai hasil dari <strong>Kegiatan Praktik Kerja Lapangan (PKL)</strong> di <strong>PT Digjaya Digital Group</strong>.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+</div>
 
-## About Laravel
+## 📸 Preview Website
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+|                            Halaman Utama                             |                               Halaman Admin                                |
+| :------------------------------------------------------------------: | :------------------------------------------------------------------------: |
+| ![Home Page](storage/app/public/screenshots/screenshot-homepage.png) | ![Admin Dashboard](storage/app/public/screenshots/screenshot-homepage.png) |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 👤 Halaman Pengunjung
 
-## Learning Laravel
+- **Beranda & Profil:** Informasi visi misi dan cerita usaha.
+- **Daftar Menu:** Katalog makanan & minuman dengan harga dan status ketersediaan.
+- **Lokasi Outlet:** Informasi alamat dan link Google Maps cabang.
+- **Berita & Promo:** Update terbaru mengenai promosi AJ Smash Burger.
+- **Contact Us:** Formulir pesan untuk kritik dan saran.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 🛠 Halaman Admin
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Dashboard:** Ringkasan jumlah menu dan pesan masuk.
+- **Manajemen Menu:** Tambah, Edit, Hapus (Soft Delete), dan Restore Menu.
+- **Manajemen Berita:** Menulis artikel promo dengan thumbnail.
+- **Profil Perusahaan Dinamis:** Edit visi, misi, link sosmed, dan info kontak tanpa coding.
+- **Manajemen Pesan:** Melihat pesan masuk dari pengunjung.
 
-## Laravel Sponsors
+## 🚀 Teknologi yang Digunakan
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Backend:** Laravel 12.x
+- **Frontend:** Blade Templates + Tailwind CSS
+- **Database:** MySQL
+- **Web Server:** Apache / Nginx (via Laragon)
 
-### Premium Partners
+## ⚙️ Persyaratan Sistem
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Pastikan laptop Anda sudah terinstall:
 
-## Contributing
+- PHP >= 8.1
+- Composer
+- Node.js & NPM
+- MySQL
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📦 Panduan Instalasi (Langkah demi Langkah)
 
-## Code of Conduct
+Ikuti langkah ini untuk menjalankan proyek di komputer lokal:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Clone Repository**
+    ```bash
+    git clone [https://github.com/arimbiws/ajsmashburgers.git](https://github.com/arimbiws/ajsmashburgers.git)
+    cd ajsmashburgers
+    ```
+2. **Install Dependencies** Install library PHP dan aset frontend:
+    ```bash
+    composer install
+    npm install
+    ```
+3. **Setup Environment (.env)** Duplikasi file .env.example menjadi .env:
+    ```bash
+    cp .env.example .env
+    ```
+    Buka file .env dan atur konfigurasi database:
+    ```bash
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=db_ajsmash
+     DB_USERNAME=root
+     DB_PASSWORD=
+    ```
+4. **Generate Application Key**
+    ```bash
+    php artisan key:generate
+    ```
+5. **Setup Database & Seeder** Jalankan migrasi tabel dan isi data awal (akun admin):
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+6. **Link Storage** Agar gambar menu/berita bisa muncul:
+    ```bash
+    php artisan storage:link
+    ```
+7. **Compile Assets (Tailwind)**
+    ```bash
+    npm run build
+    ```
+8. **Jalankan Server**
+    ```bash
+    php artisan serve
+    ```
+    Buka browser dan akses: http://127.0.0.1:8000
 
-## Security Vulnerabilities
+## 🔑 Akun Login Default
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+|       Email       | Password |
+| :---------------: | :------: |
+| admin@ajsmash.com | admin123 |
 
-## License
+_(Akun admin telah dibuat otomatis oleh UserSeeder)_
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🗂 Struktur Database (Skema)
+
+- users: Data login admin.
+- menus: Data produk makanan (Soft Deletes aktif).
+- categories: Kategori menu (Burgers, Drinks, dll).
+- news: Artikel dan promosi.
+- outlets: Lokasi cabang.
+- company_profiles: Data statis dinamis (Tentang kami, logo, sosmed).
+- messages: Kotak masuk pesan dari form kontak.
+
+## 🤝 Kontributor
+
+- Arimbi Wirasetia - Full Stack Developer (Mahasiswa PKL)
+- PT Digjaya Digital Group - Instansi PKL
+- AJ Smash Burgers - Mitra Industri
