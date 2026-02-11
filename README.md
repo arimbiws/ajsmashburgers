@@ -94,7 +94,7 @@ Ikuti langkah ini untuk menjalankan proyek di komputer lokal:
     ```bash
     php artisan migrate:fresh --seed
     ```
-6. **Jalankan Project**
+6. **Jalankan Project**\
    Buka dua terminal terpisah:
     - Terminal 1 (Compile Assets):
 
@@ -122,7 +122,6 @@ Ikuti langkah ini untuk menjalankan proyek di komputer lokal:
 - `messages`: Kotak masuk pesan dari pengunjung.
 
 ## 🤝 Kontributor
-
 Proyek ini dikembangkan sebagai bagian dari Laporan PKL/Pengabdian Masyarakat.
 
 - **Pengembang:** Arimbi Wirasetia (Mahasiswa PKL)
