@@ -1,6 +1,6 @@
 <div align="center">
-    <a href="https://github.com/username/ajsmashburgers">
-    <img src="storage\app\public\company\logo-default.png" alt="Logo AJ Smash Burger" height="200">
+    <a href="https://github.com/arimbiws/ajsmashburgers">
+    <img src="public/storage/company/logo-default.png" alt="Logo AJ Smash Burger" height="200">
     </a>
     <hr />
     <p>
@@ -16,26 +16,26 @@
 
 </div>
 
-## 📸 Preview Website
+## 💻 Preview Website
 
-|                            Halaman Utama                             |                               Halaman Admin                                |
-| :------------------------------------------------------------------: | :------------------------------------------------------------------------: |
-| ![Home Page](storage/app/public/screenshots/screenshot-homepage.png) | ![Admin Dashboard](storage/app/public/screenshots/screenshot-homepage.png) |
+|                          Halaman Utama                           |                             Halaman Admin                              |
+| :--------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| ![Home Page](public/storage/screenshots/screenshot-homepage.png) | ![Admin Dashboard](public/storage/screenshots/screenshot-homepage.png) |
 
 ## ✨ Fitur Utama
 
-### 👤 Halaman Pengunjung
+### 👤 Pengunjung (Public)
 
-- **Beranda & Profil:** Informasi visi misi dan cerita usaha.
-- **Daftar Menu:** Katalog makanan & minuman dengan harga dan status ketersediaan.
-- **Lokasi Outlet:** Informasi alamat dan link Google Maps cabang.
-- **Berita & Promo:** Update terbaru mengenai promosi AJ Smash Burger.
-- **Contact Us:** Formulir pesan untuk kritik dan saran.
+- Melihat profil usaha (About Us, Visi Misi).
+- Melihat daftar Menu lengkap dengan harga & kategori.
+- Cek lokasi Outlet (terintegrasi Google Maps).
+- Membaca Berita/Promo terbaru mengenai promosi AJ Smash Burger.
+- Mengirim pesan via fitur Contact Us.
 
-### 🛠 Halaman Admin
+### 🛠 Admin (Mitra)
 
 - **Dashboard:** Ringkasan jumlah menu dan pesan masuk.
-- **Manajemen Menu:** Tambah, Edit, Hapus (Soft Delete), dan Restore Menu.
+- **Manajemen Menu:** Tambah, Edit, Hapus, dan set status stok (Ada/Habis).
 - **Manajemen Berita:** Menulis artikel promo dengan thumbnail.
 - **Profil Perusahaan Dinamis:** Edit visi, misi, link sosmed, dan info kontak tanpa coding.
 - **Manajemen Pesan:** Melihat pesan masuk dari pengunjung.
@@ -45,7 +45,7 @@
 - **Backend:** Laravel 12.x
 - **Frontend:** Blade Templates + Tailwind CSS
 - **Database:** MySQL
-- **Web Server:** Apache / Nginx (via Laragon)
+- **Web Server:** Apache (via Laragon)
 
 ## ⚙️ Persyaratan Sistem
 
@@ -56,21 +56,22 @@ Pastikan laptop Anda sudah terinstall:
 - Node.js & NPM
 - MySQL
 
-## 📦 Panduan Instalasi (Langkah demi Langkah)
+## 📦 Panduan Instalasi
 
 Ikuti langkah ini untuk menjalankan proyek di komputer lokal:
 
 1. **Clone Repository**
     ```bash
-    git clone [https://github.com/arimbiws/ajsmashburgers.git](https://github.com/arimbiws/ajsmashburgers.git)
+    git clone https://github.com/arimbiws/ajsmashburgers.git
     cd ajsmashburgers
     ```
-2. **Install Dependencies** Install library PHP dan aset frontend:
+2. **Install Dependencies**
     ```bash
     composer install
     npm install
     ```
-3. **Setup Environment (.env)** Duplikasi file .env.example menjadi .env:
+3. **Setup Environment (.env)**\
+   Duplikasi file .env.example menjadi .env:
     ```bash
     cp .env.example .env
     ```
@@ -79,52 +80,51 @@ Ikuti langkah ini untuk menjalankan proyek di komputer lokal:
      DB_CONNECTION=mysql
      DB_HOST=127.0.0.1
      DB_PORT=3306
-     DB_DATABASE=db_ajsmash
+     DB_DATABASE=ajsmashburgers
      DB_USERNAME=root
      DB_PASSWORD=
     ```
-4. **Generate Application Key**
+4. **Generate Key & Storage Link**
     ```bash
     php artisan key:generate
+    php artisan storage:link
     ```
-5. **Setup Database & Seeder** Jalankan migrasi tabel dan isi data awal (akun admin):
+5. **Migrate & Seed Database**\
+   Pastikan database `ajsmashburgers` sudah dibuat di MySQL, lalu jalankan:
     ```bash
     php artisan migrate:fresh --seed
     ```
-6. **Link Storage** Agar gambar menu/berita bisa muncul:
-    ```bash
-    php artisan storage:link
-    ```
-7. **Compile Assets (Tailwind)**
+6. **Jalankan Project**
+   Buka dua terminal terpisah:
+    - Terminal 1 (Compile Assets):
+
     ```bash
     npm run build
     ```
-8. **Jalankan Server**
+
+    - Terminal 2 (Server Laravel):
+
     ```bash
     php artisan serve
     ```
-    Buka browser dan akses: http://127.0.0.1:8000
 
-## 🔑 Akun Login Default
+7. **Akses Website**\
+   Buka browser dan akses: http://127.0.0.1:8000
 
-|       Email       | Password |
-| :---------------: | :------: |
-| admin@ajsmash.com | admin123 |
+## 🗂 Struktur Database
 
-_(Akun admin telah dibuat otomatis oleh UserSeeder)_
-
-## 🗂 Struktur Database (Skema)
-
-- users: Data login admin.
-- menus: Data produk makanan (Soft Deletes aktif).
-- categories: Kategori menu (Burgers, Drinks, dll).
-- news: Artikel dan promosi.
-- outlets: Lokasi cabang.
-- company_profiles: Data statis dinamis (Tentang kami, logo, sosmed).
-- messages: Kotak masuk pesan dari form kontak.
+- `users`: Menyimpan data login Admin.
+- `menus`: Data makanan/minuman (Relasi ke Categories).
+- `categories`: Kategori menu (Burger, Snacks, Drinks).
+- `news`: Artikel berita dan promo.
+- `outlets`: Data lokasi cabang.
+- `company_profiles`: Data dinamis profil usaha (Logo, Sosmed, Alamat).
+- `messages`: Kotak masuk pesan dari pengunjung.
 
 ## 🤝 Kontributor
 
-- Arimbi Wirasetia - Full Stack Developer (Mahasiswa PKL)
-- PT Digjaya Digital Group - Instansi PKL
-- AJ Smash Burgers - Mitra Industri
+Proyek ini dikembangkan sebagai bagian dari Laporan PKL/Pengabdian Masyarakat.
+
+- **Pengembang:** Arimbi Wirasetia (Mahasiswa PKL)
+- **Instansi PKL:** PT Digjaya Digital Group
+- **Mitra UMKM:** AJ Smash Burger
