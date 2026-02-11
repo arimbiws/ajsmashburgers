@@ -10,7 +10,7 @@
         <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
     </p>
     <p align="center">
-        Sistem Informasi berbasis website, dibangun untuk membantu <strong>AJ Smash Burger</strong> dalam mengelola promosi digital, arsip menu, dan informasi gerai secara terpusat. Dilengkapi dengan <strong>Admin Panel</strong> untuk pengelolaan konten secara mandiri (CMS).
+        Sistem Informasi berbasis website, dibangun untuk membantu <strong>AJ Smash Burger</strong> dalam mengelola promosi digital, arsip menu, dan informasi gerai secara terpusat. Dilengkapi dengan <strong>Admin Panel</strong> untuk pengelolaan konten.
     </p>
     Proyek ini dikembangkan sebagai hasil dari <strong>Kegiatan Praktik Kerja Lapangan (PKL)</strong> di <strong>PT Digjaya Digital Group</strong>.
 
