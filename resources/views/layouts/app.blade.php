@@ -6,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'AJ Smash Burgers') }} - Admin</title>
+    <title>{{ $title ?? config('app.name', 'AJ Smash Burger') }} - Admin</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="font-sans antialiased bg-gray-100 text-gray-900">
-    <div x-data="{ sidebarOpen: false }" class="flex h-screen overflow-hidden">
+
+    <div x-data="{ sidebarOpen: window.innerWidth >= 1024 }"
+        @resize.window="sidebarOpen = window.innerWidth >= 1024"
+        class="flex h-screen overflow-hidden">
 
         <x-admin.sidebar />
 
-        <div class="flex-1 flex flex-col overflow-hidden">
-
+        <div class="flex-1 flex flex-col overflow-hidden transition-all duration-300">
             <x-admin.topbar />
 
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
@@ -36,8 +36,8 @@
                 {{ $slot }}
             </main>
         </div>
-
     </div>
+
 </body>
 
 </html>

@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
-Route::get('/menu', [FrontendController::class, 'menu'])->name('frontend.menu');
-Route::get('/outlet', [FrontendController::class, 'outlet'])->name('frontend.outlet');
-Route::get('/news', [FrontendController::class, 'news'])->name('frontend.news');
-Route::get('/news/{slug}', [FrontendController::class, 'newsDetail'])->name('frontend.news.detail');
-Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
-Route::post('/contact', [FrontendController::class, 'message'])->name('frontend.message');
+Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/menu', [FrontendController::class, 'menu'])->name('menu');
+Route::get('/outlets', [FrontendController::class, 'outlets'])->name('outlets');
+Route::get('/news', [FrontendController::class, 'news'])->name('news');
+Route::get('/news/{slug}', [FrontendController::class, 'newsDetail'])->name('news.detail');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::post('/contact', [FrontendController::class, 'message'])->name('message');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 

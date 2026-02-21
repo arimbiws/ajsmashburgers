@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+                heading: ["Boldonse", "sans-serif"],
             },
 
             colors: {
@@ -25,8 +26,8 @@ export default {
             },
             backgroundImage: {
                 "footer-gradient":
-                    "linear-gradient(to bottom, #0C4C7B, #02244)",
-                "radial-hero": "radial-gradient(circle, #0C4C7B, #02244)",
+                    "linear-gradient(to bottom, #0C4C7B, #022447)",
+                "radial-hero": "radial-gradient(circle, #0C4C7B, #022447)",
                 "box-gradient": "linear-gradient(to right, #FDCC18, #D33F17)",
                 "hero-gradient": "linear-gradient(to bottom, #FDCC18, #D33F17)",
             },

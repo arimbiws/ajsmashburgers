@@ -27,15 +27,30 @@ class FrontendController extends Controller
         return view('frontend.menu', compact('categories'));
     }
 
-    public function outlet()
+    public function about()
+    {
+        return view('frontend.about');
+    }
+
+    public function outlets()
     {
         $outlets = Outlet::all();
-        return view('frontend.outlet', compact('outlets'));
+        return view('frontend.outlets', compact('outlets'));
+    }
+
+    public function news()
+    {
+        return view('frontend.news');
     }
 
     public function newsDetail($slug)
     {
         $news = News::where('slug', $slug)->firstOrFail(); // Error 404 jika tidak ketemu
         return view('frontend.news-detail', compact('news'));
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
     }
 }
