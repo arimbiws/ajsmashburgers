@@ -51,7 +51,7 @@
 
 Pastikan laptop Anda sudah terinstall:
 
-- PHP >= 8.1
+- PHP >= 8.2
 - Composer
 - Node.js & NPM
 - MySQL
@@ -122,8 +122,9 @@ Ikuti langkah ini untuk menjalankan proyek di komputer lokal:
 - `messages`: Kotak masuk pesan dari pengunjung.
 
 ## 🤝 Kontributor
+
 Proyek ini dikembangkan sebagai bagian dari Laporan PKL/Pengabdian Masyarakat.
 
-- **Pengembang:** Arimbi Wirasetia (Mahasiswa PKL)
+- **Pengembang:** Mahasiswa PKL
 - **Instansi PKL:** PT Digjaya Digital Group
 - **Mitra UMKM:** AJ Smash Burger

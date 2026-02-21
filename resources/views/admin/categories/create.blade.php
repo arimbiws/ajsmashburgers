@@ -1,0 +1,1 @@
+<h1>Blade Create Category</h1>

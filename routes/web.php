@@ -21,9 +21,12 @@ Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend.c
 Route::post('/contact', [FrontendController::class, 'message'])->name('frontend.message');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); //pake patch or put?? /profile/{id}???
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); //pake patch or put?? /profile/{id}???
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -32,12 +35,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('news', NewsController::class);
         Route::resource('outlets', OutletController::class);
+        Route::resource('company', CompanyProfileController::class);
 
         // Khusus Company Profile (Cuma bisa Edit, tidak ada Delete/Create baru)
-        Route::get('/company-profile', [CompanyProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/company-profile', [CompanyProfileController::class, 'update'])->name('profile.update');
+        // Route::get('/company-profile', [CompanyProfileController::class, 'edit'])->name('profile.edit');
+        // Route::patch('/company-profile', [CompanyProfileController::class, 'update'])->name('profile.update');
 
-        Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+        Route::get('/messages', [MessageController::class, 'index'])->name('messages');
     });
 });
 
