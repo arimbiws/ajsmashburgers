@@ -28,22 +28,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('menus', MenuController::class);
         Route::resource('categories', CategoryController::class);
         Route::resource('news', NewsController::class);
         Route::resource('outlets', OutletController::class);
         Route::resource('company', CompanyProfileController::class);
-
-        // Khusus Company Profile (Cuma bisa Edit, tidak ada Delete/Create baru)
-        // Route::get('/company-profile', [CompanyProfileController::class, 'edit'])->name('profile.edit');
-        // Route::patch('/company-profile', [CompanyProfileController::class, 'update'])->name('profile.update');
-
-        Route::get('/messages', [MessageController::class, 'index'])->name('messages');
+        Route::resource('messages', MessageController::class)->only(['index', 'show', 'destroy']);
     });
 });
+
 
 require __DIR__ . '/auth.php';

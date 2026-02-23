@@ -3,63 +3,98 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.news.index');
+        $query = News::query();
+
+        if ($request->filled('search')) {
+            $query->where('title', 'like', "%{$request->search}%");
+        }
+
+        switch ($request->sort) {
+            case 'terlama':
+                $query->oldest();
+                break;
+            case 'judul_asc':
+                $query->orderBy('title', 'asc');
+                break;
+            case 'judul_desc':
+                $query->orderBy('title', 'desc');
+                break;
+            default:
+                $query->latest();
+                break;
+        }
+
+        $news = $query->paginate(10)->withQueryString();
+        return view('admin.news.index', compact('news'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.news.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,webp,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $validated['thumbnail'] = $request->file('thumbnail')->store('news', 'public');
+        }
+        $validated['slug'] = Str::slug($request->title);
+        $validated['user_id'] = Auth::id();
+
+        News::create($validated);
+        return redirect()->route('admin.news.index')->with('success', 'Berita berhasil ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(News $news)
     {
-        //
+        return view('admin.news.edit', compact('news'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, News $news)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            if ($news->thumbnail && Storage::disk('public')->exists($news->thumbnail)) {
+                Storage::disk('public')->delete($news->thumbnail);
+            }
+            $validated['thumbnail'] = $request->file('thumbnail')->store('news', 'public');
+        }
+        $validated['slug'] = Str::slug($request->title);
+
+        $news->update($validated);
+        return redirect()->route('admin.news.index')->with('success', 'Berita berhasil diperbarui!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(News $news)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        if ($news->thumbnail && Storage::disk('public')->exists($news->thumbnail)) {
+            Storage::disk('public')->delete($news->thumbnail);
+        }
+        $news->delete();
+        return redirect()->route('admin.news.index')->with('success', 'Berita berhasil dihapus!');
     }
 }

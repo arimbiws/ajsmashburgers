@@ -9,6 +9,7 @@ class News extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'news';
     protected $guarded = ['id'];
 
     public function user()

@@ -14,7 +14,7 @@ class CompanyProfileController extends Controller
      */
     public function index()
     {
-        return view('admin.company.index');
+        return redirect()->route('admin.company.edit', 1);
     }
 
     /**
@@ -61,15 +61,15 @@ class CompanyProfileController extends Controller
             ]
         );
 
-        return view('admin.profile.edit', compact('profile'));
+        return view('admin.company', compact('profile'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
-        $profile = CompanyProfile::first();
+        $profile = CompanyProfile::findOrFail($id);
 
         $validated = $request->validate([
             'about_us' => 'required|string',
@@ -80,7 +80,7 @@ class CompanyProfileController extends Controller
             'email_main' => 'required|email',
             'link_instagram' => 'nullable|string',
             'link_maps_main' => 'nullable|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048',
         ]);
 
         if ($request->hasFile('logo')) {

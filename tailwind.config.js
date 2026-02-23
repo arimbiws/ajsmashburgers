@@ -15,7 +15,6 @@ export default {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
                 heading: ["Boldonse", "sans-serif"],
             },
-
             colors: {
                 background: "#F3F5F3",
                 text: "#443737",

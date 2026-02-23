@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CompanyProfile;
 use App\Models\Menu;
+use App\Models\Message;
 use App\Models\News;
 use App\Models\Outlet;
 use Illuminate\Http\Request;
@@ -12,15 +14,16 @@ class FrontendController extends Controller
 {
     public function index()
     {
+        $company = CompanyProfile::first();
         $latestNews = News::latest()->take(3)->get();
-        $featuredMenus = Menu::where('is_available', 1)->take(4)->get();
+        $featuredMenus = Menu::where('is_available', 1)->latest()->take(4)->get();
 
-        return view('frontend.index', compact('latestNews', 'featuredMenus'));
+        return view('frontend.index', compact('company', 'latestNews', 'featuredMenus'));
     }
 
     public function menu()
     {
-        $categories = Category::with(['menu' => function ($query) {
+        $categories = Category::with(['menus' => function ($query) {
             $query->where('is_available', 1);
         }])->get();
 
@@ -29,7 +32,8 @@ class FrontendController extends Controller
 
     public function about()
     {
-        return view('frontend.about');
+        $company = CompanyProfile::first();
+        return view('frontend.about', compact('company'));
     }
 
     public function outlets()
@@ -40,17 +44,34 @@ class FrontendController extends Controller
 
     public function news()
     {
-        return view('frontend.news');
+        $newsList = News::latest()->paginate(9);
+        return view('frontend.news', compact('newsList'));
     }
 
     public function newsDetail($slug)
     {
-        $news = News::where('slug', $slug)->firstOrFail(); // Error 404 jika tidak ketemu
-        return view('frontend.news-detail', compact('news'));
+        $news = News::where('slug', $slug)->firstOrFail();
+        $latestNews = News::where('id', '!=', $news->id)->latest()->take(3)->get();
+        return view('frontend.news-detail', compact('news', 'latestNews'));
     }
 
     public function contact()
     {
-        return view('frontend.contact');
+        $company = CompanyProfile::first();
+        return view('frontend.contact', compact('company'));
+    }
+
+    public function message(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'nullable|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        Message::create($validated);
+
+        return redirect()->back()->with('success', 'Thank you! Your message has been sent successfully.');
     }
 }

@@ -15,7 +15,8 @@ class DashboardController extends Controller
         $totalMenus = Menu::count();
         $totalOutlets = Outlet::count();
         $unreadMessages = Message::where('is_read', false)->count();
+        $recentMessages = Message::latest()->take(5)->get();
 
-        return view('admin.dashboard', compact('totalMenus', 'totalOutlets', 'unreadMessages'));
+        return view('admin.dashboard', compact('totalMenus', 'totalOutlets', 'unreadMessages', 'recentMessages'));
     }
 }

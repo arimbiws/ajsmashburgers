@@ -1,40 +1,35 @@
-<x-frontend-layout title="Menu AJ Smash Burgers">
+<x-frontend-layout title="Menu - AJ Smash Burgers">
+    <section class="bg-tertiary py-24 px-4 pt-32 text-center">
+        <h1 class="font-heading text-white text-5xl md:text-7xl uppercase mb-4">Our Menu</h1>
+        <p class="text-primary font-bold tracking-widest uppercase">Savor the Smash Perfection</p>
+    </section>
 
-    <div class="container mx-auto px-4 py-10">
-        <h1 class="text-4xl font-bold text-center mb-10 text-orange-600">Our Menu</h1>
-
-        @foreach($categories as $category)
-
+    <section class="container mx-auto px-4 py-20 max-w-6xl">
+        @forelse ($categories as $category)
         @if($category->menus->count() > 0)
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold mb-6 border-b-2 border-orange-400 inline-block">
-                {{ $category->name }}
-            </h2>
+        <div class="mb-20">
+            <h2 class="font-heading text-tertiary text-4xl mb-10 uppercase border-b-4 border-primary inline-block pb-2">{{ $category->name }}</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                @foreach($category->menus as $menu)
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
-                    <img src="{{ asset('storage/' . $menu->menu_image) }}"
-                        alt="{{ $menu->name }}"
-                        class="w-full h-48 object-cover">
-
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">{{ $menu->name }}</h3>
-                        <p class="text-gray-600 text-sm mt-2">{{ $menu->description }}</p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-lg font-bold text-green-600">
-                                Rp {{ number_format($menu->price, 0, ',', '.') }}
-                            </span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                @foreach ($category->menus as $item)
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition duration-300 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="{{ asset('storage/' . $item->menu_image) }}" alt="{{ $item->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="font-bold text-xl text-tertiary mb-2">{{ $item->name }}</h3>
+                        <p class="text-sm text-gray-500 mb-4 h-10 line-clamp-2">{{ $item->description }}</p>
+                        <div class="text-secondary font-heading text-2xl">
+                            Rp {{ number_format($item->price, 0, ',', '.') }}
                         </div>
                     </div>
                 </div>
                 @endforeach
-
             </div>
         </div>
         @endif
-
-        @endforeach
-    </div>
+        @empty
+        <div class="text-center text-gray-500 py-10">Belum ada menu yang tersedia.</div>
+        @endforelse
+    </section>
 </x-frontend-layout>

@@ -18,9 +18,9 @@
 
 ## 💻 Preview Website
 
-|                      Halaman Utama                       |                         Halaman Admin                          |
-| :------------------------------------------------------: | :------------------------------------------------------------: |
-| ![Home Page](public/screenshots/screenshot-homepage.png) | ![Admin Dashboard](public/screenshots/screenshot-homepage.png) |
+|                 Halaman Utama                 |                       Halaman Admin                        |
+| :-------------------------------------------: | :--------------------------------------------------------: |
+| ![Home Page](public/screenshots/homepage.png) | ![Admin Dashboard](public/screenshots/dashboard-admin.png) |
 
 ## ✨ Fitur Utama
 

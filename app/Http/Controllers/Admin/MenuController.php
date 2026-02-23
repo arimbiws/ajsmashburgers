@@ -15,10 +15,40 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $menus = Menu::with('category')->latest()->paginate(12);;
+        $query = Menu::with('category');
 
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('name', 'like', "%{$search}%")
+                ->orWhereHas('category', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                });
+        }
+
+        switch ($request->sort) {
+            case 'terlama':
+                $query->oldest();
+                break;
+            case 'nama_asc':
+                $query->orderBy('name', 'asc');
+                break;
+            case 'nama_desc':
+                $query->orderBy('name', 'desc');
+                break;
+            case 'harga_tertinggi':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'harga_terendah':
+                $query->orderBy('price', 'asc');
+                break;
+            default:
+                $query->latest();
+                break;
+        }
+
+        $menus = $query->paginate(12)->withQueryString();
         return view('admin.menus.index', compact('menus'));
     }
 
@@ -41,7 +71,7 @@ class MenuController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric',
-            'menu_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', //max upload 2MB
+            'menu_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048',
             'is_available' => 'nullable|boolean',
 
         ]);
@@ -51,7 +81,7 @@ class MenuController extends Controller
         }
 
         $validated['slug'] = Str::slug($request->name);
-        $validated['is_available'] = $request->has('is_available');
+        $validated['is_available'] = $request->has('is_available') ? 1 : 0;
 
         Menu::create($validated);
 
@@ -61,15 +91,12 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Menu $menu)
     {
         $categories = Category::all();
         return view('admin.menus.edit', compact('menu', 'categories'));
@@ -85,18 +112,19 @@ class MenuController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric',
-            'menu_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', //max upload 2MB
+            'menu_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048',
             'is_available' => 'nullable|boolean',
-
         ]);
 
         if ($request->hasFile('menu_image')) {
-            if ($menu->menu_image) {
+            if ($menu->menu_image && Storage::disk('public')->exists($menu->menu_image)) {
                 Storage::disk('public')->delete($menu->menu_image);
             }
             $validated['menu_image'] = $request->file('menu_image')->store('menus', 'public');
         }
+
         $validated['slug'] = Str::slug($request->name);
+        $validated['is_available'] = $request->has('is_available') ? 1 : 0;
 
         $menu->update($validated);
 
@@ -108,7 +136,12 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
+        if ($menu->menu_image && Storage::disk('public')->exists($menu->menu_image)) {
+            Storage::disk('public')->delete($menu->menu_image);
+        }
+
         $menu->delete();
-        return redirect()->route('admin.menus.index')->with('success', value: 'Menu is deleted!');
+
+        return redirect()->route('admin.menus.index')->with('success', 'Menu is deleted!');
     }
 }
