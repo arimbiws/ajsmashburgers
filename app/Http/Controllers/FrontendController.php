@@ -17,8 +17,9 @@ class FrontendController extends Controller
         $company = CompanyProfile::first();
         $latestNews = News::latest()->take(3)->get();
         $featuredMenus = Menu::where('is_available', 1)->latest()->take(4)->get();
+        $randomMenuImage = Menu::where('is_available', 1)->inRandomOrder()->first();
 
-        return view('frontend.index', compact('company', 'latestNews', 'featuredMenus'));
+        return view('frontend.index', compact('company', 'latestNews', 'featuredMenus', 'randomMenuImage'));
     }
 
     public function menu()

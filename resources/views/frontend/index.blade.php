@@ -1,21 +1,23 @@
 <x-frontend-layout title="Home - AJ Smash Burgers">
-
     @push('after-style')
     <style>
+        .promoSwiper {
+            width: 100%;
+            padding-top: 1rem;
+        }
+
         .promoSwiper .swiper-slide {
-            width: 90%;
-            /* Dibuat lebih lebar agar bentuknya persegi panjang */
+            width: 80%;
             transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
             transform: scale(0.85);
             opacity: 0.4;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             overflow: hidden;
         }
 
         @media (min-width: 1024px) {
             .promoSwiper .swiper-slide {
-                width: 65%;
-                /* Lebih lebar untuk layar besar */
+                width: 70%;
                 transform: scale(0.8);
             }
         }
@@ -29,13 +31,18 @@
 
         .swiper-button-next,
         .swiper-button-prev {
-            background-color: white !important;
             color: #FDCC18 !important;
             width: 56px !important;
             height: 56px !important;
             border-radius: 50%;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 2px solid #f3f4f6;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background-color: #FDCC18 !important;
+            color: #2D3748 !important;
         }
 
         .swiper-button-next::after,
@@ -45,7 +52,7 @@
         }
 
         .promoSwiper .swiper-pagination {
-            bottom: 0px !important;
+            bottom: 0 !important;
         }
     </style>
     @endpush
@@ -62,8 +69,8 @@
                 <p class="text-white/80 text-sm md:text-base leading-relaxed mb-5 md:mb-10 max-w-2xl">
                     Savor the perfect smash burger experience made with premium ingredients and our secret signature sauce, delivering the ultimate satisfaction in every bite.
                 </p>
-                <a href="{{ route('menu') }}" class="bg-primary hover:bg-secondary text-tertiary hover:text-background font-bold py-3.5 px-10 rounded-full w-max transition duration-300 shadow-[0_10px_20px_rgba(253,204,24,0.3)] uppercase text-sm md:text-base tracking-wider text-center">
-                    Order Now
+                <a href="{{ route('menu') }}" class="bg-primary hover:bg-secondary text-tertiary hover:text-white font-bold py-4 px-10 rounded-full w-max transition duration-300 shadow-[0_10px_20px_rgba(253,204,24,0.3)] uppercase text-sm md:text-base tracking-wider text-center flex justify-center items-center gap-2">
+                    Order Now <x-heroicon-m-arrow-right class="w-5 h-5" />
                 </a>
             </div>
 
@@ -73,7 +80,7 @@
         </div>
     </section>
 
-    <section class="container mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 pt-32 max-w-7xl">
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 pt-12 md:pt-32 max-w-7xl">
         <div class="bg-box-gradient rounded-[2rem] px-8 py-12 md:px-12 flex flex-col md:flex-row items-center shadow-2xl gap-8">
             <div class="w-full md:w-1/2 md:pr-8 text-tertiary">
                 <h2 class="font-heading text-3xl md:text-5xl mb-5 md:mb-8">About Us</h2>
@@ -87,19 +94,27 @@
                 </div>
             </div>
             <div class="w-full md:w-1/2 hidden md:block">
-                <img src="{{ asset('storage/images/burger.jpeg') }}" alt="About Us" class="rounded-2xl w-full object-cover h-64 md:h-80 shadow-xl border-3 border-white/10"> <!--gimana caranya biar ngambil gambar random dari foto menu-->
+                <img src="{{ $randomMenuImage ? asset('storage/' . $randomMenuImage->menu_image) : asset('storage/images/burger.jpeg') }}" alt="About Us" class="rounded-2xl w-full object-cover h-64 md:h-80 shadow-xl border-3 border-white/10">
             </div>
         </div>
     </section>
 
     <section class="w-full overflow-hidden pb-16 md:pb-24 relative">
         <div class="mx-auto relative">
-            <div class="swiper promoSwiper !pb-16">
-                <div class="swiper-wrapper"> <!--ngambil datanya dari database tabel news terus ditengah gambar thumbnailnya diisi title/judulnya-->
-                    <!-- perlu ditambahin option untuk whether its news or promo?? -->
-                    @foreach($featuredMenus as $menu)
-                    <div class="swiper-slide">
-                        <img src="{{ asset('storage/' . $menu->menu_image) }}" class="w-full h-64 md:h-[450px] object-cover rounded-[2rem] shadow-xl" alt="{{ $menu->name }}">
+            <div class="swiper promoSwiper">
+                <div class="swiper-wrapper">
+                    @foreach($latestNews as $news)
+                    <div class="swiper-slide relative group cursor-pointer" onclick="window.location.href='{{ route('news.detail', $news->slug) }}'">
+                        <img src="{{ asset('storage/' . $news->thumbnail) }}" class="w-full h-64 md:h-[450px] object-cover rounded-md shadow-xl" alt="{{ $news->title }}">
+                        <div class="absolute inset-0 bg-black/40 rounded-xl transition-opacity duration-300 group-hover:bg-black/50"></div>
+                        <div class="absolute top-6 left-6 md:top-8 md:left-8 bg-primary text-tertiary text-xs md:text-sm font-bold px-4 py-2 rounded-full uppercase tracking-widest shadow-md">
+                            {{ isset($news->type) && $news->type == 'promo' ? 'Promo' : 'News' }}
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center p-6 text-center">
+                            <h3 class="text-white font-heading text-md/relaxed md:text-xl/loose lg:text-2xl/loose uppercase drop-shadow-lg group-hover:scale-105 transition-transform duration-300 leading-snug">
+                                {{ $news->title }}
+                            </h3>
+                        </div>
                     </div>
                     @endforeach
                 </div>
@@ -114,15 +129,15 @@
         <div class="w-full bg-box-gradient text-tertiary font-heading text-3xl md:text-5xl py-6 px-16 rounded-xl shadow-lg mb-5 md:mb-8 text-center uppercase tracking-wide">
             AJ News
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-            <!-- bagaimana caranya biar tampilin cardsnya cuma 2 aja pas layar tablet -->
-            @foreach($latestNews as $news)
-            <x-news-card
-                title="{{ $news->title }}"
-                excerpt="{{ Str::limit(strip_tags($news->content), 100) }}"
-                image="storage/{{ $news->thumbnail }}"
-                link="{{ route('news.detail', $news->slug) }}" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach($latestNews as $index => $news)
+            <div class="{{ $index == 2 ? 'hidden lg:block' : '' }}">
+                <x-news-card
+                    title="{{ $news->title }}"
+                    excerpt="{{ Str::limit(strip_tags($news->content), 100) }}"
+                    image="storage/{{ $news->thumbnail }}"
+                    link="{{ route('news.detail', $news->slug) }}" />
+            </div>
             @endforeach
         </div>
     </section>
@@ -240,32 +255,20 @@
                 centeredSlides: true,
                 loop: true,
                 speed: 800,
-                spaceBetween: 15,
-
+                spaceBetween: 10,
                 autoplay: {
                     delay: 3500,
-                    disableOnInteraction: false,
+                    disableOnInteraction: true,
                 },
-
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
                     dynamicBullets: true,
                 },
-
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-
-                breakpoints: {
-                    768: {
-                        spaceBetween: 30,
-                    },
-                    1024: {
-                        spaceBetween: 40,
-                    }
-                }
             });
         });
     </script>
