@@ -137,14 +137,14 @@
             </div>
 
             <div class="flex space-x-3 w-full md:w-2/3 justify-center md:justify-end">
-                <div class="relative group overflow-hidden rounded-3xl shadow-md border-2 border-gray-50">
-                    <img src="{{ asset('storage/images/burger.jpeg') }}" class="w-28 h-56 md:w-56 md:h-[26rem] object-cover transform group-hover:scale-105 transition duration-500" alt="IG Post 1">
+                <div class="relative group overflow-hidden rounded-3xl shadow-xl border-2 border-gray-50">
+                    <img src="{{ asset('storage/images/bg-1.jpeg') }}" class="w-28 h-56 md:w-56 md:h-[24rem] object-cover transform group-hover:scale-105 transition duration-500" alt="IG Post 1">
                 </div>
-                <div class="relative group overflow-hidden rounded-3xl shadow-md border-4 border-gray-50">
-                    <img src="{{ asset('storage/images/burger.jpeg') }}" class="w-28 h-56 md:w-56 md:h-[26rem] object-cover transform group-hover:scale-105 transition duration-500" alt="IG Post 2">
+                <div class="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-gray-50">
+                    <img src="{{ asset('storage/images/bg-2.jpeg') }}" class="w-28 h-56 md:w-56 md:h-[24rem] object-cover transform group-hover:scale-105 transition duration-500" alt="IG Post 2">
                 </div>
-                <div class="relative group overflow-hidden rounded-3xl shadow-md border-2 border-gray-50">
-                    <img src="{{ asset('storage/images/burger.jpeg') }}" class="w-28 h-56 md:w-56 md:h-[26rem] object-cover transform group-hover:scale-105 transition duration-500" alt="IG Post 3">
+                <div class="relative group overflow-hidden rounded-3xl shadow-xl border-2 border-gray-50">
+                    <img src="{{ asset('storage/images/bg-3.jpeg') }}" class="w-28 h-56 md:w-56 md:h-[24rem] object-cover transform group-hover:scale-105 transition duration-500" alt="IG Post 3">
                 </div>
             </div>
         </div>

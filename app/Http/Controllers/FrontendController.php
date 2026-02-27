@@ -34,7 +34,30 @@ class FrontendController extends Controller
     public function about()
     {
         $company = CompanyProfile::first();
-        return view('frontend.about', compact('company'));
+
+        // Ambil data gambar dari tabel menus (menggunakan kolom menu_image)
+        $menuImages = Menu::whereNotNull('menu_image')
+            ->where('menu_image', '!=', '')
+            ->pluck('menu_image')
+            ->toArray();
+
+        // Ambil data gambar dari tabel outlets 
+        // Catatan: Sesuaikan string 'image' di bawah dengan nama kolom foto di tabel outlets Anda (misalnya 'photo', 'outlet_image', dll)
+        $outletImages = Outlet::whereNotNull('outlet_image')
+            ->where('outlet_image', '!=', '')
+            ->pluck('outlet_image')
+            ->toArray();
+
+        // Gabungkan kedua array gambar
+        $allImages = array_merge($menuImages, $outletImages);
+
+        // Acak urutan gambar
+        shuffle($allImages);
+
+        // Ambil maksimal 8 gambar
+        $galleryImages = array_slice($allImages, 0, 8);
+
+        return view('frontend.about', compact('company', 'galleryImages'));
     }
 
     public function outlets()

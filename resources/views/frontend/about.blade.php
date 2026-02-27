@@ -10,13 +10,13 @@
         </div>
     </section>
 
-    <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:pt-16 md:pb-24 max-w-7xl">
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:pt-16 md:pb-24 max-w-7xl">
         <div class="flex flex-col sm:flex-row gap-5 lg:gap-8 items-center">
-            <div class="w-full sm:w-1/2 flex justify-center">
-                <img src="{{ asset('storage/images/burger.jpeg') }}" alt="About Us" class="rounded-2xl object-cover h-full shadow-xl border-3 border-white/10">
+            <div class="w-full sm:w-1/2 sm:flex justify-center hidden">
+                <img src="{{ asset('storage/images/burger-1.png') }}" alt="About Us" class="rounded-2xl object-cover h-52 md:h-80 lg:h-[26rem]">
             </div>
             <div class="w-full sm:w-1/2 text-tertiary md:px-5">
-                <h3 class="font-heading text-3xl/loose md:text-4xl/loose mb-3">Something About AJ Smash Burgers</h3>
+                <h3 class="font-heading text-3xl/relaxed md:text-4xl/loose mb-3">Something About AJ Smash Burgers</h3>
                 <p class="text-sm text-text mb-6 text-justify">{{ $company->about_us ?? 'AJ Smash Burger didirikan dari passion yang kuat terhadap burger bergaya klasik. Kami percaya bahwa teknik "smash" pada daging sapi segar di atas wajan panas adalah kunci untuk mengunci rasa dan menciptakan kerak karamelisasi yang sempurna.' }}</p>
 
                 <div class="grid grid-cols-2 gap-3 md:gap-8">
@@ -43,11 +43,11 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             @if(isset($galleryImages) && count($galleryImages) > 0)
             @foreach($galleryImages as $image)
-            <img src="{{ asset('storage/' . $image) }}" alt="AJ Gallery" class="w-full h-40 md:h-56 object-cover rounded-xl shadow-md hover:scale-105 transition duration-500 cursor-pointer">
+            <img src="{{ asset('storage/' . $image) }}" alt="Image from AJ Gallery" class="w-full h-40 md:h-56 object-cover rounded-xl shadow-md hover:scale-105 transition duration-500 cursor-pointer">
             @endforeach
             @else
             @for ($i = 0; $i < 8; $i++)
-                <img src="{{ asset('storage/images/burger.jpeg') }}" alt="Burger Perfection" class="w-full h-40 md:h-56 object-cover rounded-xl shadow-md hover:scale-105 transition duration-500 cursor-pointer">
+                <img src="{{ asset('storage/images/burger-2.png') }}" alt="Burger Perfection" class="w-full h-40 md:h-56 object-cover rounded-xl shadow-md hover:scale-105 transition duration-500 cursor-pointer">
                 @endfor
                 @endif
         </div>
