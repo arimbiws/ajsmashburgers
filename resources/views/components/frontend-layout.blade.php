@@ -23,7 +23,7 @@
     @stack('after-style')
 </head>
 
-<body class="font-sans antialiased text-gray-900 bg-gray-50">
+<body class="font-sans antialiased text-text bg-background">
 
     <x-navbar />
 

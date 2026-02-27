@@ -44,8 +44,12 @@ class FrontendController extends Controller
 
     public function news()
     {
-        $newsList = News::latest()->paginate(9);
-        return view('frontend.news', compact('newsList'));
+        $featuredNews = News::latest()->first();
+        $newsList = News::when($featuredNews, function ($query) use ($featuredNews) {
+            return $query->where('id', '!=', $featuredNews->id);
+        })->latest()->paginate(6);
+
+        return view('frontend.news', compact('featuredNews', 'newsList'));
     }
 
     public function newsDetail($slug)

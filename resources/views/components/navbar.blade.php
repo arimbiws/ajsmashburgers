@@ -1,6 +1,10 @@
-<nav x-data="{ mobileMenuOpen: false }" class="bg-accent text-white w-full z-50 sticky top-0 shadow-md">
+<nav x-data="{ mobileMenuOpen: false, scrolled: false }"
+    @scroll.window="scrolled = (window.pageYOffset > 20)"
+    :class="{ 'bg-accent shadow-md': scrolled || mobileMenuOpen, 'bg-transparent': !scrolled && !mobileMenuOpen }"
+    class="fixed text-white w-full z-50 top-0 transition-all duration-300">
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
+        <div class="flex justify-between items-center h-24">
 
             <div class="shrink-0 flex items-center">
                 <a href="{{ route('home') }}">
@@ -9,10 +13,8 @@
             </div>
 
             <div class="hidden md:flex space-x-9 text-white font-medium text-md tracking-wide">
-                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">Home</a>
-
+                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-primary font-bold  border-b-2 border-primary pb-1' : 'hover:text-primary transition' }}">Home</a>
                 <a href="{{ route('about') ?? '#' }}" class="{{ request()->routeIs('about') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">About Us</a>
-
                 <a href="{{ route('menu') ?? '#' }}" class="{{ request()->routeIs('menu') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">Menu</a>
                 <a href="{{ route('outlets') ?? '#' }}" class="{{ request()->routeIs('outlets') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">Outlets</a>
                 <a href="{{ route('news') ?? '#' }}" class="{{ request()->routeIs('news*') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">News</a>
@@ -20,15 +22,12 @@
             </div>
 
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-primary hover:text-white focus:outline-none transition-colors">
-
                 <svg x-show="!mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
-
                 <svg x-show="mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
-
             </button>
         </div>
     </div>

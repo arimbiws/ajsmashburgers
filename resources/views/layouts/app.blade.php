@@ -87,6 +87,7 @@
             });
         }
     </script>
+    @stack('after-script')
 </body>
 
 </html>
