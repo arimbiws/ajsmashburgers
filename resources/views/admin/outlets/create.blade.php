@@ -29,7 +29,7 @@
             <div class="mb-6">
                 <label class="block text-sm font-bold text-text mb-2 uppercase tracking-wide">Gambar Cabang</label>
                 <input type="file" name="outlet_image"
-                    class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:border-secondary focus:bg-white outline-none transition-all cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200">
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/20 focus:outline-none outline-none transition-all cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200">
             </div>
 
             <div class="mb-6">

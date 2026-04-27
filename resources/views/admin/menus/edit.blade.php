@@ -52,7 +52,7 @@
                 @endif
 
                 <input type="file" name="menu_image"
-                    class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:border-secondary outline-none transition-all cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200">
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/20 focus:outline-none outline-none transition-all cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200">
                 <p class="text-xs text-gray-400 mt-2 font-medium">*Biarkan kosong jika tidak ingin mengubah gambar.</p>
             </div>
 

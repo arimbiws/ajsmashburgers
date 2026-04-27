@@ -13,9 +13,9 @@
 
             <div class="mb-6">
                 <label class="block text-sm font-bold text-text mb-2 uppercase">Judul Berita/Promo</label>
-                <input type="text" name="title" value="{{ old('title', $news->title) }}" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:border-secondary outline-none transition">
+                <input type="text" name="title" value="{{ old('title', $news->title) }}" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/20 outline-none transition-all">
             </div>
-
+    
             <div class="mb-6 p-6 bg-gray-50/50 rounded-2xl border border-gray-100">
                 <label class="block text-sm font-bold text-text mb-4 uppercase">Gambar Thumbnail</label>
                 @if($news->thumbnail)
@@ -23,13 +23,13 @@
                     <img src="{{ asset('storage/' . $news->thumbnail) }}" class="w-48 h-28 object-cover rounded-xl border border-gray-200 shadow-sm">
                 </div>
                 @endif
-                <input type="file" name="thumbnail" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:border-secondary outline-none transition cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200">
+                <input type="file" name="thumbnail" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/20 focus:outline-none outline-none transition-all cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200">
                 <p class="text-xs text-gray-400 mt-2 font-medium">*Biarkan kosong jika tidak ingin mengubah gambar.</p>
             </div>
 
             <div class="mb-8">
                 <label class="block text-sm font-bold text-text mb-2 uppercase">Konten Lengkap</label>
-                <textarea name="content" rows="10" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:border-secondary outline-none transition resize-y">{{ old('content', $news->content) }}</textarea>
+                <textarea name="content" rows="10" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/20 outline-none transition-all resize-y">{{ old('content', $news->content) }}</textarea>
             </div>
 
             <div class="flex justify-end pt-6 border-t border-gray-100">

@@ -4,7 +4,10 @@
             <a href="{{ route('admin.categories.index') }}" class="p-2 bg-white rounded-xl shadow-sm border border-gray-100 text-gray-500 hover:border-secondary hover:text-secondary transition-colors">
                 <x-heroicon-o-arrow-left class="w-5 h-5" />
             </a>
-            <h2 class="text-2xl font-bold text-text tracking-wide mb-1 md:mb-2">Tambah Kategori Baru</h2>
+            <div>
+                <h2 class="text-2xl font-bold text-text tracking-wide mb-1 md:mb-2">Tambah Kategori Baru</h2>
+                <p class="text-sm text-gray-400">Tambahkan kategori makanan baru.</p>
+            </div>
         </div>
 
         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
