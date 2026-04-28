@@ -4,10 +4,10 @@
             style="background-image: url('{{ asset('storage/images/overlay.png') }}');">
         </div>
         <div class="relative container mx-auto flex flex-col items-center justify-center text-center max-w-7xl gap-4 md:gap-7 pt-16 md:pt-12 px-4 sm:px-6 lg:px-8">
-            <h1 class="font-heading text-background text-2xl sm:text-4xl lg:text-5xl tracking-wider">AJ Smash Burgers Stores</h1>
+            <h1 class="font-heading text-background text-2xl sm:text-4xl lg:text-5xl tracking-wider">AJ Smash Burgers Outlets</h1>
 
             <p class="text-background mx-auto text-xs md:text-base tracking-wider max-w-sm md:max-w-xl md:mt-2">
-                Temukan lokasi AJ Smash Burgers terdekat dan rasakan pengalaman menikmati burger smash terbaik langsung di tempat kami.
+                Temukan lokasi AJ Smash Burgers terdekat dan rasakan pengalaman menikmati burger smash terbaik.
             </p>
         </div>
     </section>

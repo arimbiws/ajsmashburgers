@@ -13,12 +13,12 @@
             </div>
 
             <div class="hidden md:flex space-x-9 text-white font-medium text-md tracking-wide">
-                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-primary font-bold  border-b-2 border-primary pb-1' : 'hover:text-primary transition' }}">Home</a>
-                <a href="{{ route('about') ?? '#' }}" class="{{ request()->routeIs('about') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">About Us</a>
-                <a href="{{ route('menu') ?? '#' }}" class="{{ request()->routeIs('menu') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">Menu</a>
-                <a href="{{ route('outlets') ?? '#' }}" class="{{ request()->routeIs('outlets') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">Outlets</a>
-                <a href="{{ route('news') ?? '#' }}" class="{{ request()->routeIs('news*') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">News</a>
-                <a href="{{ route('contact') ?? '#' }}" class="{{ request()->routeIs('contact') ? 'text-primary font-bold' : 'hover:text-primary transition' }}">Contact Us</a>
+                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'hover:text-primary transition' }}">Home</a>
+                <a href="{{ route('about') ?? '#' }}" class="{{ request()->routeIs('about') ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'hover:text-primary transition' }}">About Us</a>
+                <a href="{{ route('menu') ?? '#' }}" class="{{ request()->routeIs('menu') ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'hover:text-primary transition' }}">Menu</a>
+                <a href="{{ route('outlets') ?? '#' }}" class="{{ request()->routeIs('outlets') ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'hover:text-primary transition' }}">Outlets</a>
+                <a href="{{ route('news') ?? '#' }}" class="{{ request()->routeIs('news*') ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'hover:text-primary transition' }}">News</a>
+                <a href="{{ route('contact') ?? '#' }}" class="{{ request()->routeIs('contact') ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'hover:text-primary transition' }}">Contact Us</a>
             </div>
 
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-primary hover:text-white focus:outline-none transition-colors">
